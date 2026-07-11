@@ -460,8 +460,8 @@ function HeroSection() {
             className="flex items-center gap-6 mt-12"
           >
             {[
-              { label: "PMP 認證", icon: "🏅" },
-              { label: "7 年經驗", icon: "⚡" },
+              { label: "1.5 年經驗", icon: "🏅" },
+              { label: "系統整合", icon: "🖥️" },
               { label: "政府專案", icon: "🏛️" },
             ].map(b => (
               <div key={b.label} className="flex items-center gap-2">
