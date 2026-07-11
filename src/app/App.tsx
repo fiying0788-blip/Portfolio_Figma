@@ -436,7 +436,7 @@ function HeroSection() {
             className="text-lg text-[#6B7280] leading-relaxed mb-10 max-w-lg"
           >
             專注於政府數位轉型、跨機關資訊整合與 AI 工作流優化的資深專案管理師。
-            以系統化思維解決複雜問題，讓組織的每一個流程都更智慧、更高效。
+            以系統化思維解決複雜問題，讓組織的每一個流程都更智慧、更高效。👌
           </motion.p>
 
           <motion.div
