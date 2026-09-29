@@ -417,11 +417,11 @@ function Nav() {
   }, []);
 
   const links = [
-    { label: "作品集", href: "#projects" },
+    { label: "量化指標", href: "#achievements" },
     { label: "經歷", href: "#timeline" },
-    { label: "技能", href: "#skills" },
-    { label: "儀表板", href: "#dashboard" },
-    { label: "聯絡", href: "#contact" },
+    { label: "工作能力", href: "#projects" },
+    { label: "興趣", href: "#side-projects" },
+    { label: "聯絡", href: "#contact" }, 
   ];
 
   return (
@@ -437,7 +437,7 @@ function Nav() {
           href="#hero"
           className="text-2xl font-black tracking-tight text-[#4F7DF7]"
         >
-          E.
+          Eric T.
         </a>
         <div className="hidden md:flex items-center gap-8">
           {links.map((l) => (
@@ -852,7 +852,7 @@ function StatCard({
 
 function AchievementsSection() {
   return (
-    <section className="py-20 bg-white border-y border-gray-100">
+    <section id="achievements" className="py-20 bg-white border-y border-gray-100">
       <div className="max-w-7xl mx-auto px-6 lg:px-12 ">
         <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-3">
           {ACHIEVEMENTS.map((a) => (
@@ -1694,132 +1694,6 @@ function DashboardSection() {
   );
 }
 
-// ─── SIDE PROJECTS ──────────────────────────────────────────────────────────
-
-function SideProjectsSection() {
-  const [open, setOpen] = useState<number | null>(null);
-
-  return (
-    <section className="py-24">
-      <div className="max-w-7xl mx-auto px-6 lg:px-12">
-        <div className="mb-14">
-          <p className="text-sm font-semibold text-[#4F7DF7] uppercase tracking-wider mb-3">
-            側專案
-          </p>
-          <h2 className="text-4xl font-black text-[#1F2937]">
-            業餘時間，
-            <span className="text-[#4F7DF7]">持續創造。</span>
-          </h2>
-        </div>
-
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
-          {SIDE_PROJECTS.map((p) => (
-            <div
-              key={p.id}
-              className="bg-white rounded-2xl border border-gray-100 shadow-sm overflow-hidden hover:shadow-md hover:-translate-y-0.5 transition-all duration-300"
-            >
-              <div className="p-6">
-                <div className="flex items-center justify-between mb-4">
-                  <div className="flex items-center gap-2">
-                    <div
-                      className="w-2 h-2 rounded-full"
-                      style={{ backgroundColor: p.statusColor }}
-                    />
-                    <span
-                      className="text-xs font-semibold"
-                      style={{ color: p.statusColor }}
-                    >
-                      {p.status}
-                    </span>
-                  </div>
-                  <Star className="w-4 h-4 text-gray-300" />
-                </div>
-
-                <h3 className="text-lg font-bold text-[#1F2937] mb-2">
-                  {p.name}
-                </h3>
-                <p className="text-sm text-[#6B7280] leading-relaxed mb-4">
-                  {p.desc}
-                </p>
-
-                <div className="flex flex-wrap gap-1.5 mb-5">
-                  {p.tags.map((t) => (
-                    <span
-                      key={t}
-                      className="text-xs px-2.5 py-1 bg-[#F7F7F5] border border-gray-200 text-[#6B7280] rounded-full"
-                    >
-                      {t}
-                    </span>
-                  ))}
-                </div>
-
-                <button
-                  onClick={() =>
-                    setOpen(open === p.id ? null : p.id)
-                  }
-                  className="text-xs font-semibold text-[#4F7DF7] flex items-center gap-1"
-                >
-                  {open === p.id ? "收起詳情" : "查看詳情"}
-                  <ChevronDown
-                    className={`w-3.5 h-3.5 transition-transform ${open === p.id ? "rotate-180" : ""}`}
-                  />
-                </button>
-
-                {open === p.id && (
-                  <motion.div
-                    initial={{ opacity: 0, height: 0 }}
-                    animate={{ opacity: 1, height: "auto" }}
-                    transition={{ duration: 0.25 }}
-                    className="mt-4 pt-4 border-t border-gray-100 space-y-3"
-                  >
-                    {[
-                      { label: "架構", value: p.architecture },
-                      { label: "學到了", value: p.lessons },
-                      { label: "下一步", value: p.roadmap },
-                    ].map((item) => (
-                      <div key={item.label}>
-                        <p className="text-xs font-bold text-[#6B7280] mb-1">
-                          {item.label}
-                        </p>
-                        <p className="text-xs text-[#1F2937] leading-relaxed">
-                          {item.value}
-                        </p>
-                      </div>
-                    ))}
-                  </motion.div>
-                )}
-              </div>
-
-              <div className="border-t border-gray-100 flex">
-                {p.hasDemo && (
-                  <a
-                    href="#"
-                    className="flex-1 flex items-center justify-center gap-1.5 py-3 text-xs font-semibold text-[#4F7DF7] hover:bg-blue-50 transition-colors"
-                  >
-                    <Zap className="w-3.5 h-3.5" />
-                    Live Demo
-                  </a>
-                )}
-                {p.hasDemo && p.hasGithub && (
-                  <div className="w-px bg-gray-100" />
-                )}
-                {p.hasGithub && (
-                  <a
-                    href="#"
-                    className="flex-1 flex items-center justify-center gap-1.5 py-3 text-xs font-semibold text-[#6B7280] hover:bg-gray-50 transition-colors"
-                  >
-                    <Github className="w-3.5 h-3.5" />
-                    GitHub
-                  </a>
-                )}
-              </div>
-            </div>
-          ))}
-        </div>
-      </div>
-    </section>
-  );
-}
 
 // ─── CONTACT ────────────────────────────────────────────────────────────────
 
@@ -2887,7 +2761,8 @@ export function SideProjectsV2() {
   const cur = CAROUSEL_SLIDES[slide];
 
   return (
-    <section className="py-24">
+    // 加上 id="side-projects"
+    <section id="side-projects" className="py-24">
       <div className="max-w-7xl mx-auto px-6 lg:px-12">
         {/* Header */}
         <div className="mb-12">
